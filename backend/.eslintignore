@@ -1,0 +1,4 @@
+build/*
+*.json
+.eslintrc.js
+rollup.config.js
