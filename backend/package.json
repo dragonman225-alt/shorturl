@@ -7,7 +7,7 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
-    "start": "rollup -cw",
+    "start": "concurrently \"rollup -cw\" \"nodemon .\" -n \"rollup,server\"",
     "build": "npm run build:module && npm run build:doc",
     "build:module": "rm -rf build && rollup -c && tsc --emitDeclarationOnly",
     "build:doc": "npm run build:dependency-graph",
@@ -16,7 +16,8 @@
     "test": "ts-node --skip-project --log-error test/ntable.spec.ts"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "typeorm": "^0.2.38"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.3.0",
@@ -25,10 +26,12 @@
     "@types/node": "^16.11.1",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
+    "concurrently": "^6.3.0",
     "dependency-cruiser": "^10.0.5",
     "eslint": "^7.24.0",
     "eslint-config-prettier": "^8.2.0",
     "eslint-plugin-prettier": "^3.3.1",
+    "nodemon": "^2.0.13",
     "prettier": "^2.4.1",
     "rollup": "^2.53.3",
     "tslib": "^2.3.1",
