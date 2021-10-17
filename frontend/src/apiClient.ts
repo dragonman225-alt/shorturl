@@ -11,9 +11,13 @@ export async function createShortUrl(
   onSuccess: (shortUrl: string) => void,
   onError: (message: string) => void
 ) {
+  const headers = new Headers()
+  headers.append('content-type', 'application/json')
+
   return fetch(`api/create`, {
     method: 'POST',
     body: JSON.stringify({ url } as CreateShortUrlRequestData),
+    headers,
   })
     .then(checkStatus)
     .then(response => parseJson<CreateShortUrlResponseData>(response))
