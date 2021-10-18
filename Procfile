@@ -1,0 +1,1 @@
+web: cd frontend && yarn build && cd ../backend && yarn build && node build/index.js --public="../frontend/build"
