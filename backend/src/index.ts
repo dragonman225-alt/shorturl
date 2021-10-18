@@ -18,8 +18,9 @@ async function startServer() {
   await createConnection()
 
   /** Start express. */
+  const port = process.env.PORT || 3001
   const app = express()
-  app.listen(3001)
+  app.listen(port)
 
   app.use(express.json())
 
@@ -74,7 +75,7 @@ async function startServer() {
   if (publicPath) app.use(express.static(absolutePublicPath))
 
   /** Print server information. */
-  console.log('Server running at port 3001')
+  console.log(`Server running at port ${port}`)
   if (!publicPath) console.log('API server only')
   else console.log(`With public directory "${absolutePublicPath}"`)
 }
