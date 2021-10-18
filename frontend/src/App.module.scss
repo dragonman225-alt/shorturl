@@ -4,6 +4,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: hsl(28deg, 20%, 15%);
+  background: rgb(253, 252, 247);
 }
 
 .widget {
@@ -11,32 +13,46 @@
   flex-direction: column;
   width: 100%;
   max-width: 350px;
-  padding: 1rem;
+  padding: 1rem 1rem 1.4rem;
+  --focus-outline-color: hsla(28deg, 50%, 25%, 0.3);
 
   label {
     display: block;
     font-size: 1.25rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
   }
 
   input {
-    margin-bottom: 0.5rem;
+    padding: 0.3rem 0.5rem;
+    margin-bottom: 1rem;
+    border: none;
+    background: hsl(28deg, 30%, 96%);
+
+    &:focus-visible {
+      outline: 3px solid var(--focus-outline-color);
+    }
   }
 
   button {
     align-self: center;
     padding: 0.3rem 1rem;
-    width: 70%;
+    width: 60%;
     min-width: 7rem;
     border: none;
     transition: background 30ms ease-in-out;
+    background: hsl(28deg, 100%, 92%);
+    cursor: pointer;
 
     &:hover {
-      background: rgba(0, 0, 0, 0.08);
+      background: hsl(28deg, 90%, 88%);
     }
 
     &:active {
-      background: rgba(0, 0, 0, 0.16);
+      background: hsl(28deg, 90%, 84%);
+    }
+
+    &:focus-visible {
+      outline: 3px solid var(--focus-outline-color);
     }
   }
 
@@ -51,5 +67,6 @@
 
 .error {
   padding: 0.5rem;
+  margin-bottom: 1rem;
   color: rgb(218, 65, 65);
 }
