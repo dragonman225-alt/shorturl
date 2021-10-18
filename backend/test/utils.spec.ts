@@ -1,8 +1,14 @@
 import { test } from 'zora'
 
-import { toBase58 } from '../src/utils'
+import { isValidUrl, toBase58 } from '../src/utils'
 
-test('toBase58Padded', t => {
+test('isValidUrl', t => {
+  t.eq(isValidUrl(''), false)
+  t.eq(isValidUrl('1234'), false)
+  t.eq(isValidUrl('http://www.example.com'), true)
+})
+
+test('toBase58', t => {
   t.eq(toBase58(0), '1')
   t.eq(toBase58(58), '12')
 })
