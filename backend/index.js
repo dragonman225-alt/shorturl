@@ -15,8 +15,9 @@ async function startServer() {
     /** Start database. */
     await (0, typeorm_1.createConnection)();
     /** Start express. */
+    const port = process.env.PORT || 3001;
     const app = (0, express_1.default)();
-    app.listen(3001);
+    app.listen(port);
     app.use(express_1.default.json());
     /** Create URL. */
     app.post(api_1.SHORT_URLS_API_PATH, (req, res) => {
@@ -60,7 +61,7 @@ async function startServer() {
     if (publicPath)
         app.use(express_1.default.static(absolutePublicPath));
     /** Print server information. */
-    console.log('Server running at port 3001');
+    console.log(`Server running at port ${port}`);
     if (!publicPath)
         console.log('API server only');
     else
