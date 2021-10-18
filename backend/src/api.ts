@@ -9,3 +9,4 @@ export interface CreateShortUrlResponseData {
 }
 
 export const SHORT_URLS_API_PATH = '/api/shorturls'
+export const REDIRECT_PATH = '/s'

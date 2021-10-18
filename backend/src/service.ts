@@ -16,3 +16,10 @@ export async function insertUrl(validUrl: string): Promise<string> {
   await repository.save(newUrl)
   return shortHash
 }
+
+export async function findUrl(shortHash: string): Promise<string | undefined> {
+  const repository = getRepository(Url)
+  const url = await repository.findOne({ shortHash })
+  if (url) return url.originalUrl
+  else return undefined
+}
