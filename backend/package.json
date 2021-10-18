@@ -7,12 +7,12 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
-    "start": "concurrently \"rollup -cw\" \"nodemon .\" -n \"rollup,server\"",
+    "start": "concurrently \"rollup -cw\" \"nodemon .\" -k -n \"rollup,server\"",
     "build": "npm run build:module && npm run build:doc",
     "build:module": "rm -rf build && rollup -c && tsc --emitDeclarationOnly",
     "build:doc": "npm run build:dependency-graph",
-    "build:dependency-graph": "npx depcruise --exclude '^node_modules' --output-type dot --prefix 'https://github.com/dragonman225-alt/shorturl/tree/master/backend/' src/index.ts | dot -T svg > assets/deps_graph.svg",
-    "build:tsviz": "tsviz src/ntable.ts assets/ntable.png",
+    "build:dependency-graph": "npx depcruise --exclude '^node_modules' --output-type dot --prefix 'https://github.com/dragonman225-alt/shorturl/tree/master/backend/' src/index.ts | dot -T svg > docs/deps_graph.svg",
+    "build:tsviz": "tsviz src/ntable.ts docs/ntable.png",
     "test": "ts-node --skip-project --log-error test/ntable.spec.ts"
   },
   "dependencies": {
