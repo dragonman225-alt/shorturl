@@ -4,9 +4,9 @@
   "private": true,
   "author": "dragonman225",
   "license": "MIT",
-  "main": "backend/build/index.js",
+  "main": "backend/index.js",
   "scripts": {
-    "start": "node . --public=\"frontend/build\""
+    "start": "node . --public=\"frontend\""
   },
   "dependencies": {
     "@dnpr/cli": "^2.0.0",
