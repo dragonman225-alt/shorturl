@@ -3,6 +3,7 @@ import {
   CreateShortUrlResponseData,
   SHORT_URLS_API_PATH,
 } from './api'
+import { getUrlPrefix } from './utils'
 
 export async function createShortUrl(
   url: string,
@@ -21,7 +22,7 @@ export async function createShortUrl(
     .then(response => parseJson<CreateShortUrlResponseData>(response))
     .then(data => {
       if (data.error) onError(data.message)
-      else onSuccess(data.hash)
+      else onSuccess(`${getUrlPrefix()}${data.hash}`)
     })
     .catch((error: Error) => {
       onError(error.message)
