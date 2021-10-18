@@ -14,7 +14,9 @@
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
-    "noImplicitAny": false // to use untyped modules
+    "noImplicitAny": false, // to use untyped modules
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
   },
   "include": [
     "src/**/*"

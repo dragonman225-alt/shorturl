@@ -1,0 +1,14 @@
+{
+  "type": "sqlite",
+  "database": "database.sqlite",
+  "synchronize": true,
+  "logging": false,
+  "entities": ["build/entities/**/*.js"],
+  "migrations": ["build/migrations/**/*.js"],
+  "subscribers": ["build/subscribers/**/*.js"],
+  "cli": {
+    "entitiesDir": "build/entities",
+    "migrationsDir": "build/migrations",
+    "subscribersDir": "build/subscribers"
+  }
+}

@@ -1,10 +1,8 @@
-interface CreateShortUrlRequestData {
-  url: string
-}
-
-interface CreateShortUrlResponseData {
-  shortUrl: string
-}
+import {
+  CreateShortUrlRequestData,
+  CreateShortUrlResponseData,
+  SHORT_URLS_API_PATH,
+} from './api'
 
 export async function createShortUrl(
   url: string,
@@ -14,7 +12,7 @@ export async function createShortUrl(
   const headers = new Headers()
   headers.append('content-type', 'application/json')
 
-  return fetch(`api/create`, {
+  return fetch(SHORT_URLS_API_PATH, {
     method: 'POST',
     body: JSON.stringify({ url } as CreateShortUrlRequestData),
     headers,
@@ -22,7 +20,8 @@ export async function createShortUrl(
     .then(checkStatus)
     .then(response => parseJson<CreateShortUrlResponseData>(response))
     .then(data => {
-      onSuccess(data.shortUrl)
+      if (data.error) onError(data.message)
+      else onSuccess(data.hash)
     })
     .catch((error: Error) => {
       onError(error.message)

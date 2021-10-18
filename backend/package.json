@@ -7,20 +7,20 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
-    "start": "concurrently \"rollup -cw\" \"nodemon .\" -k -n \"rollup,server\"",
+    "start": "concurrently \"tsc --watch\" \"nodemon .\" -k -n \"tsc,server\"",
     "build": "npm run build:module && npm run build:doc",
-    "build:module": "rm -rf build && rollup -c && tsc --emitDeclarationOnly",
+    "build:module": "rm -rf build && tsc",
     "build:doc": "npm run build:dependency-graph",
     "build:dependency-graph": "npx depcruise --exclude '^node_modules' --output-type dot --prefix 'https://github.com/dragonman225-alt/shorturl/tree/master/backend/' src/index.ts | dot -T svg > docs/deps_graph.svg",
-    "build:tsviz": "tsviz src/ntable.ts docs/ntable.png",
-    "test": "ts-node --skip-project --log-error test/ntable.spec.ts"
+    "test": "ts-node --skip-project --log-error test/utils.spec.ts"
   },
   "dependencies": {
     "express": "^4.17.1",
+    "reflect-metadata": "^0.1.13",
+    "sqlite3": "^5.0.2",
     "typeorm": "^0.2.38"
   },
   "devDependencies": {
-    "@rollup/plugin-typescript": "^8.3.0",
     "@tsconfig/node14": "^1.0.1",
     "@types/express": "^4.17.13",
     "@types/node": "^16.11.1",
@@ -33,9 +33,7 @@
     "eslint-plugin-prettier": "^3.3.1",
     "nodemon": "^2.0.13",
     "prettier": "^2.4.1",
-    "rollup": "^2.53.3",
     "tslib": "^2.3.1",
-    "tsviz": "1.0.11",
     "typescript": "^4.4.4",
     "zora": "^5.0.0"
   }
