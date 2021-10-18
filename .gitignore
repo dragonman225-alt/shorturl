@@ -11,9 +11,6 @@ coverage
 # production
 build
 
-# deployment
-/dist
-
 # misc
 .DS_Store
 .env.local
