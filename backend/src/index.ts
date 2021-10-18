@@ -1,6 +1,8 @@
 import 'reflect-metadata'
+import path from 'path'
 import express from 'express'
 import { createConnection } from 'typeorm'
+import { FlagTypes, parseArgv, parseFlagVal } from '@dnpr/cli'
 
 import {
   CreateShortUrlRequestData,
@@ -59,6 +61,22 @@ async function startServer() {
         })
     }
   })
+
+  /** Configure public directory. */
+  const { flags } = parseArgv(process.argv)
+  const publicPath = parseFlagVal(
+    flags,
+    '--public',
+    FlagTypes.string,
+    ''
+  ) as string
+  const absolutePublicPath = path.join(process.cwd(), publicPath)
+  if (publicPath) app.use(express.static(absolutePublicPath))
+
+  /** Print server information. */
+  console.log('Server running at port 3001')
+  if (!publicPath) console.log('API server only')
+  else console.log(`With public directory "${absolutePublicPath}"`)
 }
 
 startServer().catch(error => console.error(error))

@@ -15,6 +15,7 @@
     "test": "ts-node --skip-project --log-error test/utils.spec.ts"
   },
   "dependencies": {
+    "@dnpr/cli": "^2.0.0",
     "express": "^4.17.1",
     "reflect-metadata": "^0.1.13",
     "sqlite3": "^5.0.2",

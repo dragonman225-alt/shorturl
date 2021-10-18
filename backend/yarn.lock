@@ -23,6 +23,11 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
+"@dnpr/cli@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@dnpr/cli/-/cli-2.0.0.tgz#ba7b5f099ce8789bae03ea831589d0117130be4d"
+  integrity sha512-gQlw8v8rkQadmy9U2JFVa053ij5wIAT7GnEGVHbKaWMAnKDNSsOnNagZj+zO09TpzYchYqZhEKSdrfs4UY7vTQ==
+
 "@eslint/eslintrc@^0.4.3":
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/@eslint/eslintrc/-/eslintrc-0.4.3.tgz#9e42981ef035beb3dd49add17acb96e8ff6f394c"
