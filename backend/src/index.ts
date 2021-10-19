@@ -46,7 +46,6 @@ async function startServer() {
 
   /** Find URL and redirect. */
   app.get<{ shortHash: string }>(`${REDIRECT_PATH}/:shortHash`, (req, res) => {
-    console.log('hello')
     const shortHash = req.params.shortHash
     if (!shortHash) res.redirect('/')
     else {
