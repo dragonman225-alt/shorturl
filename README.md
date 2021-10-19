@@ -16,7 +16,7 @@
    yarn start
    ```
 
-3. Start backend API server. Uses port `3001` if not supplied via an environment variable.
+3. Start backend API server. Uses port `3001` if not supplied via the environment variable `PORT`.
 
    ```bash
    cd backend
@@ -37,13 +37,11 @@ Create a distribution package and push it to `deploy` git branch.
 ./create-dist/create-dist.sh
 ```
 
-The distribution package is friendly to hosting services that support Node.js, so it can be easily picked up and run.
-
-(One just need to install necessary dependencies and run the `start` script.)
+The distribution package is friendly to hosting services that support Node.js, so it can be easily picked up and run. ("friendly" – one just need to `npm install` and `npm start`)
 
 ### Manual
 
-If you have full control of the server, or you want to test locally, you can
+If you have full control of the server, or you want to test locally, you can also
 
 ```bash
 # Don't forget to run "yarn build" in both frontend/ and backend/
