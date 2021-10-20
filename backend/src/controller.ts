@@ -31,7 +31,7 @@ export class Controller {
       res.json({
         error: true,
         hash: '',
-        message: 'Redirection to the URL is not allowed',
+        message: "It's not allowed to shorten this URL",
       })
       return
     }
