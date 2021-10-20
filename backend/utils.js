@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.toBase58 = exports.isValidUrl = void 0;
+exports.isBlacklistedUrl = exports.toBase58 = exports.isValidUrl = void 0;
 const url_1 = require("url");
 function isValidUrl(url) {
     try {
@@ -29,4 +29,19 @@ function toBase58(count) {
     return results.join('');
 }
 exports.toBase58 = toBase58;
+function isBlacklistedUrl(url, blacklistHosts) {
+    try {
+        const urlObj = new url_1.URL(url);
+        for (let i = 0; i < blacklistHosts.length; i++) {
+            const blacklistHost = blacklistHosts[i];
+            if (urlObj.host === blacklistHost)
+                return true;
+        }
+        return false;
+    }
+    catch (error) {
+        return true;
+    }
+}
+exports.isBlacklistedUrl = isBlacklistedUrl;
 //# sourceMappingURL=utils.js.map

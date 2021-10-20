@@ -6,7 +6,7 @@
   "license": "MIT",
   "main": "backend/index.js",
   "scripts": {
-    "start": "node . --public=\"frontend\""
+    "start": "node . --public=\"frontend\" --blacklist-hosts=lurt.herokuapp.com"
   },
   "dependencies": {
     "@dnpr/cli": "^2.0.0",
