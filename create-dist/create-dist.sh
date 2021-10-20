@@ -17,7 +17,7 @@ rm -rf dist
 mkdir -p dist
 cp -r frontend/build dist/frontend
 cp -r backend/build dist/backend
-cp create-dist/package.json dist/package.json
+node create-dist/generatePackageJson.js > dist/package.json
 cp create-dist/ormconfig.json dist/ormconfig.json
 
 # Need to commit to current branch so that git subtree can detect changes
