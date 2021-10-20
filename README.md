@@ -84,10 +84,10 @@ pushd frontend && yarn build && popd
 pushd backend && yarn build && popd
 # Start the server
 cd backend
-node build/index.js --public="../frontend/build"
+node build/index.js --public="../frontend/build" --blacklist-hosts="localhost:3001"
 ```
 
-Above starts a backend server that also host static assets. Without `--public` option, the server runs API services only.
+Above starts a backend server that also host static assets, at default port `3001`. Without `--public` option, the server runs API services only. Without `--blacklist-hosts` option, the server is vulnerable to recursive redirection (one can generate a short URL from another short URL, and a chain of redirection can be crafted).
 
 ## Design
 
