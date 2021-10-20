@@ -25,3 +25,19 @@ export function toBase58(count: number): string {
   } while (dividend > 0)
   return results.join('')
 }
+
+export function isBlacklistedUrl(
+  url: string,
+  blacklistHosts: string[]
+): boolean {
+  try {
+    const urlObj = new URL(url)
+    for (let i = 0; i < blacklistHosts.length; i++) {
+      const blacklistHost = blacklistHosts[i]
+      if (urlObj.host === blacklistHost) return true
+    }
+    return false
+  } catch (error) {
+    return true
+  }
+}

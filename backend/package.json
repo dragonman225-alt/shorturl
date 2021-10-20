@@ -7,7 +7,7 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
-    "start": "concurrently \"tsc --watch\" \"nodemon .\" -k -n \"tsc,server\"",
+    "start": "concurrently \"tsc --watch\" \"nodemon . --blacklist-hosts=localhost:3000\" -k -n \"tsc,server\"",
     "build": "npm run build:module && npm run build:doc",
     "build:module": "rm -rf build && tsc",
     "build:doc": "npm run build:dependency-graph",
