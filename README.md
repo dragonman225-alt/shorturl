@@ -79,8 +79,10 @@ The distribution package is friendly to hosting services that support Node.js. (
 If you have full control of the server, or you want to test locally, you can also
 
 ```bash
+# Don't forget to build the packages
 pushd frontend && yarn build && popd
 pushd backend && yarn build && popd
+# Start the server
 cd backend
 node build/index.js --public="../frontend/build"
 ```
