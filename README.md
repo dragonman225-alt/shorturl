@@ -142,7 +142,7 @@ Above starts a backend server that also host static assets, at default port `300
 * Not bundling code, only use `tsc` to compile them for simplicity.
 * Written tests for core algorithms and functions in `backend/src/utils.ts` with [zora](https://github.com/lorenzofox3/zora).
 
-#### Express Server (`backend/src/index.ts`)
+#### Express Server (`backend/src/index.ts, controller.ts`)
 
 * Validates an user-provided URL before passing it to the URL shortening service.
 * By default runs only the API server providing URL shortening service, so one can serve static assets with `nginx` or other servers optimized for static assets. But there's an option to enable serving static assets with Express.
@@ -189,6 +189,5 @@ Above starts a backend server that also host static assets, at default port `300
 ## Problems, Improvements, and Ideas
 
 * Problem: The API type definition is duplicated in both `frontend/` and `backend/` since `create-react-app` doesn't allow importing scripts outside of `frontend/src/`, and there's no exposed config option to change it ([source](https://stackoverflow.com/a/44115058)).
-* Improvement: Extract request handlers to a "controller" module.
 * Idea: Count redirection times for each URL and show trending URLs on the homepage.
 * Idea: See who generates the short URL, by logging IP or having an account system.
