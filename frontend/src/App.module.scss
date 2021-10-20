@@ -34,30 +34,13 @@
   }
 
   button {
+    display: block;
     align-self: center;
-    padding: 0.3rem 1rem;
     width: 60%;
     min-width: 7rem;
-    border: none;
-    transition: background 30ms ease-in-out;
-    background: hsl(28deg, 100%, 92%);
-    cursor: pointer;
-
-    &:hover {
-      background: hsl(28deg, 90%, 88%);
-    }
-
-    &:active {
-      background: hsl(28deg, 90%, 84%);
-    }
-
-    &:focus-visible {
-      outline: 3px solid var(--focus-outline-color);
-    }
   }
 
-  input,
-  button {
+  input {
     display: block;
     font-size: 1rem;
     line-height: 1.5;

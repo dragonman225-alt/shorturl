@@ -1,0 +1,22 @@
+button {
+  padding: 0.3rem 1rem;
+  border: none;
+  border-radius: 0.3rem;
+  transition: background 30ms ease-in-out;
+  background: hsl(28deg, 100%, 92%);
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1.5;
+
+  &:hover {
+    background: hsl(28deg, 90%, 88%);
+  }
+
+  &:active {
+    background: hsl(28deg, 90%, 84%);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--focus-outline-color);
+  }
+}

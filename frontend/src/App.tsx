@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { createShortUrl } from './apiClient'
 
 import styles from './App.module.scss'
+import Button from './Button'
 
 enum AppStatus {
   EnteringUrl,
@@ -29,7 +30,7 @@ function App() {
               onChange={e => setLongUrl(e.target.value)}
               required
             />
-            <button
+            <Button
               onClick={() => {
                 if (!longUrl) return
                 createShortUrl(
@@ -46,7 +47,7 @@ function App() {
                 setStatus(AppStatus.Pending)
               }}>
               Shorten
-            </button>
+            </Button>
           </>
         )}
         {status === AppStatus.ShowingShortUrl && (
@@ -57,18 +58,18 @@ function App() {
               onClick={e => (e.target as HTMLInputElement).select()}
               readOnly
             />
-            <button onClick={() => setStatus(AppStatus.EnteringUrl)}>
+            <Button onClick={() => setStatus(AppStatus.EnteringUrl)}>
               Shorten another
-            </button>
+            </Button>
           </>
         )}
         {status === AppStatus.Pending && <div>Shortening</div>}
         {status === AppStatus.ShowingError && (
           <>
             <div className={styles.error}>{errorMessage}</div>
-            <button onClick={() => setStatus(AppStatus.EnteringUrl)}>
+            <Button onClick={() => setStatus(AppStatus.EnteringUrl)}>
               Try again
-            </button>
+            </Button>
           </>
         )}
       </div>
