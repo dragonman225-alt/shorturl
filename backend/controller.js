@@ -5,7 +5,7 @@ const service_1 = require("./service");
 const utils_1 = require("./utils");
 class Controller {
     constructor(options = { blacklistHosts: [] }) {
-        this.createUrl = (req, res) => {
+        this.createUrl = async (req, res) => {
             const longUrl = req.body.url;
             if (!(0, utils_1.isValidUrl)(longUrl)) {
                 res.json({ error: true, hash: '', message: 'Invalid URL' });
@@ -17,6 +17,10 @@ class Controller {
                     hash: '',
                     message: "It's not allowed to shorten this URL",
                 });
+                return;
+            }
+            if (!(await (0, utils_1.isReachableUrl)(longUrl))) {
+                res.json({ error: true, hash: '', message: 'Unreachable URL' });
                 return;
             }
             (0, service_1.insertUrl)(longUrl)
