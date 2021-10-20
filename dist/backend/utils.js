@@ -1,6 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.isBlacklistedUrl = exports.toBase58 = exports.isValidUrl = void 0;
+exports.isReachableUrl = exports.isBlacklistedUrl = exports.toBase58 = exports.isValidUrl = void 0;
+const node_fetch_1 = __importDefault(require("node-fetch"));
 const url_1 = require("url");
 function isValidUrl(url) {
     try {
@@ -44,4 +48,15 @@ function isBlacklistedUrl(url, blacklistHosts) {
     }
 }
 exports.isBlacklistedUrl = isBlacklistedUrl;
+function isReachableUrl(url) {
+    return (0, node_fetch_1.default)(url, {
+        headers: {
+            /** Set user-agent to pretent it's Chrome or some sites don't work. e.g. bilibili */
+            'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36',
+        },
+    })
+        .then(res => res.status === 200)
+        .catch(() => false);
+}
+exports.isReachableUrl = isReachableUrl;
 //# sourceMappingURL=utils.js.map
