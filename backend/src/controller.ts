@@ -2,7 +2,7 @@ import { RequestHandler } from 'express'
 
 import { CreateShortUrlRequestData, CreateShortUrlResponseData } from './api'
 import { findUrl, insertUrl } from './service'
-import { isBlacklistedUrl, isValidUrl } from './utils'
+import { isBlacklistedUrl, isReachableUrl, isValidUrl } from './utils'
 
 interface ControllerOptions {
   blacklistHosts: string[]
@@ -21,7 +21,7 @@ export class Controller {
     undefined,
     CreateShortUrlResponseData,
     CreateShortUrlRequestData
-  > = (req, res) => {
+  > = async (req, res) => {
     const longUrl = req.body.url
     if (!isValidUrl(longUrl)) {
       res.json({ error: true, hash: '', message: 'Invalid URL' })
@@ -33,6 +33,10 @@ export class Controller {
         hash: '',
         message: "It's not allowed to shorten this URL",
       })
+      return
+    }
+    if (!(await isReachableUrl(longUrl))) {
+      res.json({ error: true, hash: '', message: 'Unreachable URL' })
       return
     }
     insertUrl(longUrl)

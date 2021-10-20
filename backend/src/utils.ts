@@ -1,3 +1,4 @@
+import fetch from 'node-fetch'
 import { URL } from 'url'
 
 export function isValidUrl(url: string): boolean {
@@ -40,4 +41,16 @@ export function isBlacklistedUrl(
   } catch (error) {
     return true
   }
+}
+
+export function isReachableUrl(url: string): Promise<boolean> {
+  return fetch(url, {
+    headers: {
+      /** Set user-agent to pretent it's Chrome or some sites don't work. e.g. bilibili */
+      'user-agent':
+        'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36',
+    },
+  })
+    .then(res => res.status === 200)
+    .catch(() => false)
 }
